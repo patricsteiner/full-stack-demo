@@ -1,19 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDogDto } from './dto/create-dog.dto';
 import { UpdateDogDto } from './dto/update-dog.dto';
+import { Dog } from './entities/dog.entity';
 
 @Injectable()
 export class DogsService {
+  dogs: Dog[] = [{ id: '123', name: 'hasso', breed: 'dobermann' }];
+
   create(createDogDto: CreateDogDto) {
-    return 'This action adds a new dog';
+    this.dogs.push({ id: Math.random().toString(), ...createDogDto });
   }
 
   findAll() {
-    return `This action returns all dogs`;
+    return this.dogs;
   }
 
   findOne(id: string) {
-    return `This action returns a #${id} dog`;
+    return this.dogs.filter((d) => d.id === id);
   }
 
   update(id: string, updateDogDto: UpdateDogDto) {
@@ -21,6 +24,6 @@ export class DogsService {
   }
 
   remove(id: string) {
-    return `This action removes a #${id} dog`;
+    this.dogs = this.dogs.filter((d) => d.id !== id);
   }
 }
