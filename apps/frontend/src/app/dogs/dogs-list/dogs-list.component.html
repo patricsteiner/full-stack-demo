@@ -1,0 +1,22 @@
+<h2>Saved Dogs</h2>
+<table *ngIf="dogs.length; else empty">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>breed</th>
+    <th>image</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dog of dogs" [routerLink]="dog.id">
+    <td>{{dog.id}}</td>
+    <td>{{dog.name}}</td>
+    <td>{{dog.breed}}</td>
+    <td><img [src]="dog.imageUrl" style="width: 50px; height: 50px; object-fit: cover"></td>
+  </tr>
+  </tbody>
+</table>
+<ng-template #empty>
+  Dog list is empty :(
+</ng-template>

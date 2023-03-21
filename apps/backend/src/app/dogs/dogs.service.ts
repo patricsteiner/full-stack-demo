@@ -5,10 +5,10 @@ import { Dog } from './entities/dog.entity';
 
 @Injectable()
 export class DogsService {
-  dogs: Dog[] = [{ id: '123', name: 'hasso', breed: 'dobermann' }];
+  dogs: Dog[] = [];
 
   create(createDogDto: CreateDogDto) {
-    this.dogs.push({ id: Math.random().toString(), ...createDogDto });
+    this.dogs.push({ ...createDogDto, id: Math.random().toString() });
   }
 
   findAll() {
@@ -16,7 +16,7 @@ export class DogsService {
   }
 
   findOne(id: string) {
-    return this.dogs.filter((d) => d.id === id);
+    return this.dogs.filter((d) => d.id === id)[0];
   }
 
   update(id: string, updateDogDto: UpdateDogDto) {

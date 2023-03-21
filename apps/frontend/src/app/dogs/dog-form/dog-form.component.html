@@ -1,0 +1,9 @@
+<form [formGroup]="dogForm">
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="imageUrl">
+  Name: <input formControlName="name" placeholder="Hasso">
+  <br>
+  Breed: <input formControlName="breed" placeholder="Dobermann">
+  <br>
+  <button (click)="saveDog()" [disabled]="!dogForm.valid">Save</button>
+</form>

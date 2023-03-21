@@ -1,1 +1,13 @@
-{{dogs$ | async | json}}
+<h1 style="text-align: center">Welcome to the fabulous Dog App 🐶</h1>
+<div style="display: flex; justify-content: space-around">
+  <div>
+    <button (click)="findRandomDog()" style="margin: 24px 0 ">Find random Doge on the internet</button>
+    <br>
+    <img [src]="randomDogImage" style="width: 200px; height: 200px; object-fit: cover">
+    <br>
+    <full-stack-demo-dog-form *ngIf="randomDogImage" [dog]="{imageUrl: randomDogImage}" (dogChange)="save($event)"></full-stack-demo-dog-form>
+  </div>
+  <div>
+    <full-stack-demo-dogs-list [dogs]="(dogs$ | async) || []"></full-stack-demo-dogs-list>
+  </div>
+</div>
