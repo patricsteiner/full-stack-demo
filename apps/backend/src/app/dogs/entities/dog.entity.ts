@@ -1,6 +1,14 @@
+import { Column, Entity, ObjectIdColumn } from 'typeorm';
+import { ObjectId } from 'mongodb';
+
+@Entity()
 export class Dog {
-  id: string;
+  @ObjectIdColumn()
+  id: ObjectId;
+  @Column()
   name: string;
+  @Column()
   breed: string;
-  imageUrl?: string;
+  @Column()
+  imageUrl: string;
 }

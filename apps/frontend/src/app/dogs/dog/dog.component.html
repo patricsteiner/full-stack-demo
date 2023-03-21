@@ -1,5 +1,5 @@
 <ng-container *ngIf="dog$ | async as dog">
-  <h2>{{dog.name}}</h2>
+  <h2>Dog: {{dog.name}}</h2>
   <img [src]="dog.imageUrl" style="width: 200px; height: 200px; object-fit: cover">
   <full-stack-demo-dog-form [dog]="dog" (dogChange)="onDogChange($event)"></full-stack-demo-dog-form>
 </ng-container>

@@ -36,7 +36,7 @@ export class DogsComponent implements OnInit {
   async findRandomDog() {
     this.randomDogImage = await firstValueFrom(
       this.dogsService.findRandomDogImageOnTheInternet()
-    );
+    ).then((res) => res.imageUrl);
     this.cdr.detectChanges();
   }
 

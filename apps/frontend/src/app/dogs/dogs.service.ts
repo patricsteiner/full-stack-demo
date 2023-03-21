@@ -31,9 +31,11 @@ export class DogsService {
     return firstValueFrom(this.http.delete(this.apiUrl + id));
   }
 
-  findRandomDogImageOnTheInternet(): Observable<string> {
+  findRandomDogImageOnTheInternet(): Observable<{ imageUrl: string }> {
     return this.http
-      .get<{ status: string, message: string }>('https://dog.ceo/api/breeds/image/random')
-      .pipe(map((res) => res.message));
+      .get<{ status: string; message: string }>(
+        'https://dog.ceo/api/breeds/image/random'
+      )
+      .pipe(map((res) => ({ imageUrl: res.message })));
   }
 }

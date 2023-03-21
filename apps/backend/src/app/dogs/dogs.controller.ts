@@ -36,7 +36,7 @@ export class DogsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.dogsService.remove(id);
+  delete(@Param('id') id: string) {
+    return this.dogsService.delete(id);
   }
 }
